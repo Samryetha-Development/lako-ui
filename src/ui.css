@@ -1,0 +1,198 @@
+:root {
+  --lako-ui-bg: var(--bg, #f7f8f8);
+  --lako-ui-surface: var(--surface, #ffffff);
+  --lako-ui-surface-2: var(--surface-2, #f0f2f3);
+  --lako-ui-ink: var(--ink, #171a1c);
+  --lako-ui-muted: var(--muted, #70777b);
+  --lako-ui-faint: var(--faint, #a7adaf);
+  --lako-ui-line: var(--line, #e1e4e5);
+  --lako-ui-accent: var(--accent, #597585);
+  --lako-ui-accent-fill: var(--accent-fill, #3d7dbf);
+  --lako-ui-accent-soft: var(--accent-soft, #e7eef1);
+  --lako-ui-danger: var(--danger, #9a5555);
+  --lako-ui-success: var(--success, #2d7d50);
+  --lako-ui-warning: var(--warning, #a06e1e);
+  --lako-ui-on-accent: var(--on-accent, #ffffff);
+  --lako-ui-font: var(--font, "Segoe UI Variable Text", "Segoe UI", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif);
+}
+
+.lako-auth {
+  --lako-ui-bg: var(--lako-bg);
+  --lako-ui-surface: var(--lako-surface);
+  --lako-ui-surface-2: var(--lako-surface-2);
+  --lako-ui-ink: var(--lako-ink);
+  --lako-ui-muted: var(--lako-muted);
+  --lako-ui-faint: var(--lako-faint);
+  --lako-ui-line: var(--lako-line);
+  --lako-ui-accent: var(--lako-accent);
+  --lako-ui-accent-soft: var(--lako-accent-soft);
+  --lako-ui-accent-fill: var(--lako-accent-fill);
+  --lako-ui-danger: var(--lako-danger);
+  --lako-ui-success: light-dark(#2d7d50, #4ade80);
+  --lako-ui-font: var(--lako-font-text);
+}
+
+.lako-ui-dropdown { position: relative; width: 100%; font-family: var(--lako-ui-font); }
+.lako-ui-dropdown-trigger { width: 100%; height: 40px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 13px; border: 1px solid var(--lako-ui-line); border-radius: 10px; background: color-mix(in srgb, var(--lako-ui-surface) 76%, transparent); color: var(--lako-ui-ink); font: inherit; font-size: 13px; text-align: left; transition: border-color .14s ease, border-radius .14s ease, background .14s ease, box-shadow .14s ease; }
+.lako-ui-dropdown-trigger:hover { background: var(--lako-ui-surface); }
+.lako-ui-dropdown-trigger:focus-visible { outline: 0; border-color: color-mix(in srgb, var(--lako-ui-accent) 62%, var(--lako-ui-line)); box-shadow: 0 0 0 3px color-mix(in srgb, var(--lako-ui-accent) 8%, transparent); }
+.lako-ui-dropdown-trigger.open { border-color: color-mix(in srgb, var(--lako-ui-accent) 62%, var(--lako-ui-line)); border-bottom-color: var(--lako-ui-line); border-radius: 10px 10px 0 0; background: var(--lako-ui-surface); box-shadow: none; }
+.lako-ui-dropdown-trigger > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lako-ui-dropdown-trigger > i { width: 7px; height: 7px; flex: 0 0 auto; border-right: 1.25px solid var(--lako-ui-muted); border-bottom: 1.25px solid var(--lako-ui-muted); transform: translateY(-2px) rotate(45deg); transition: transform .14s ease; }
+.lako-ui-dropdown-trigger.open > i { transform: translateY(2px) rotate(225deg); }
+.lako-ui-dropdown-options { position: absolute; z-index: 80; top: 100%; right: 0; left: 0; max-height: min(320px, 45vh); overflow-y: auto; padding: 4px; border: 1px solid color-mix(in srgb, var(--lako-ui-accent) 62%, var(--lako-ui-line)); border-top: 0; border-radius: 0 0 10px 10px; background: var(--lako-ui-surface); box-shadow: 0 14px 32px rgba(20, 24, 26, .16); opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(-3px); transition: opacity .11s ease, transform .14s cubic-bezier(.22, .8, .24, 1), visibility 0s linear .14s; }
+.lako-ui-dropdown-options.open { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition: opacity .11s ease, transform .14s cubic-bezier(.22, .8, .24, 1), visibility 0s; }
+.lako-ui-dropdown-option { width: 100%; min-height: 34px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 7px 10px; border: 0; border-radius: 7px; background: transparent; color: var(--lako-ui-ink); font: inherit; font-size: 13px; text-align: left; }
+.lako-ui-dropdown-option:hover, .lako-ui-dropdown-option:focus-visible { outline: 0; background: var(--lako-ui-accent-soft); }
+.lako-ui-dropdown-option.active { background: var(--lako-ui-accent-soft); }
+.lako-ui-dropdown-option.selected { color: var(--lako-ui-accent); }
+.lako-ui-dropdown-option > i { width: 5px; height: 5px; flex: 0 0 5px; border-radius: 50%; background: currentColor; }
+.lako-ui-dropdown-search-wrap { position: sticky; z-index: 1; top: 0; padding: 4px; background: var(--lako-ui-surface); }
+.lako-ui-dropdown-search { width: 100%; height: 34px; padding: 0 9px; border: 1px solid var(--lako-ui-line); border-radius: 7px; outline: 0; background: var(--lako-ui-surface-2); color: var(--lako-ui-ink); font: inherit; font-size: 13px; }
+.lako-ui-dropdown-search:focus { border-color: color-mix(in srgb, var(--lako-ui-accent) 62%, var(--lako-ui-line)); box-shadow: 0 0 0 2px color-mix(in srgb, var(--lako-ui-accent) 8%, transparent); }
+.lako-ui-dropdown-empty { padding: 12px 10px; color: var(--lako-ui-muted); font-size: 12px; text-align: center; }
+
+.lako-ui-dialog-overlay { position: fixed; z-index: 1000; inset: 0; display: grid; place-items: center; padding: 20px; background: color-mix(in srgb, #080a0b 58%, transparent); backdrop-filter: blur(3px); animation: lako-ui-fade-in .16s ease both; }
+.lako-ui-dialog { width: min(440px, 100%); max-height: min(720px, calc(100vh - 40px)); overflow-y: auto; padding: 24px; border: 1px solid var(--lako-ui-line); border-radius: 14px; background: var(--lako-ui-surface); color: var(--lako-ui-ink); box-shadow: 0 24px 70px rgba(0, 0, 0, .24); font-family: var(--lako-ui-font); animation: lako-ui-dialog-in .2s cubic-bezier(.22, .8, .24, 1) both; }
+.lako-ui-dialog-overlay.closing { pointer-events: none; animation: lako-ui-fade-out .18s ease both; }
+.lako-ui-dialog-overlay.closing .lako-ui-dialog { animation: lako-ui-dialog-out .18s cubic-bezier(.4, 0, 1, 1) both; }
+.lako-ui-dialog:focus { outline: 0; }
+.lako-ui-dialog h2 { margin: 0; font-size: 21px; font-weight: 600; letter-spacing: -.005em; }
+.lako-ui-dialog > p { margin: 7px 0 0; color: var(--lako-ui-muted); font-size: 13px; line-height: 1.55; }
+.lako-ui-dialog-body { margin-top: 22px; }
+.lako-ui-dialog-actions { display: flex; justify-content: flex-end; gap: 9px; margin-top: 24px; }
+
+.lako-ui-notifications { position: fixed; z-index: 1100; top: 20px; right: 20px; width: min(280px, calc(100vw - 40px)); display: flex; flex-direction: column; gap: 9px; pointer-events: none; }
+.lako-ui-notification { --notification-color: var(--lako-ui-accent); min-height: 46px; display: flex; align-items: center; gap: 10px; padding: 11px 14px 11px 12px; border: 1px solid color-mix(in srgb, var(--notification-color) 28%, var(--lako-ui-line)); border-left: 3px solid var(--notification-color); border-radius: 11px; background: var(--lako-ui-surface); color: var(--lako-ui-ink); box-shadow: 0 10px 28px rgba(20, 24, 26, .14); font-family: var(--lako-ui-font); font-size: 12px; font-weight: 600; animation: lako-ui-notification-in .24s cubic-bezier(.22, .8, .24, 1) both; }
+.lako-ui-notification.success { --notification-color: var(--lako-ui-success); }
+.lako-ui-notification.error { --notification-color: var(--lako-ui-danger); }
+.lako-ui-notification-icon { width: 20px; height: 20px; flex: 0 0 20px; display: grid; place-items: center; border-radius: 50%; background: color-mix(in srgb, var(--notification-color) 13%, transparent); color: var(--notification-color); }
+.lako-ui-notification-icon svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.9; }
+
+.lako-ui-tabs { position: relative; display: flex; gap: 22px; border-bottom: 1px solid var(--lako-ui-line); font-family: var(--lako-ui-font); }
+.lako-ui-tabs button { position: relative; padding: 0 0 11px; border: 0; background: transparent; color: var(--lako-ui-muted); font: inherit; font-size: 13px; transition: color .14s ease; }
+.lako-ui-tabs button:hover, .lako-ui-tabs button.active { color: var(--lako-ui-ink); }
+.lako-ui-tabs button:focus-visible { outline: 2px solid var(--lako-ui-accent); outline-offset: 3px; }
+.lako-ui-tabs-indicator { position: absolute; bottom: -1px; left: 0; height: 2px; border-radius: 999px; background: var(--lako-ui-accent); opacity: 0; pointer-events: none; }
+.lako-ui-tabs-indicator.ready { opacity: 1; }
+.lako-ui-tabs-indicator.animate { transition: width .22s cubic-bezier(.22, .8, .24, 1), transform .22s cubic-bezier(.22, .8, .24, 1), opacity .12s ease; }
+
+.lako-ui-input-box { display: grid; gap: 7px; color: var(--lako-ui-muted); font-family: var(--lako-ui-font); font-size: 11px; font-weight: 600; }
+.lako-ui-input-control { min-width: 0; height: 40px; display: flex; align-items: center; border: 1px solid var(--lako-ui-line); border-radius: 10px; background: color-mix(in srgb, var(--lako-ui-surface) 76%, transparent); transition: border-color .14s ease, background .14s ease, box-shadow .14s ease; }
+.lako-ui-input-control:focus-within { border-color: color-mix(in srgb, var(--lako-ui-accent) 62%, var(--lako-ui-line)); background: var(--lako-ui-surface); box-shadow: 0 0 0 3px color-mix(in srgb, var(--lako-ui-accent) 8%, transparent); }
+.lako-ui-input-control.invalid { border-color: color-mix(in srgb, var(--lako-ui-danger) 62%, var(--lako-ui-line)); }
+.lako-ui-input-control input { min-width: 0; height: 100%; flex: 1; padding: 0 12px; border: 0; outline: 0; background: transparent; color: var(--lako-ui-ink); font: inherit; font-size: 13px; font-weight: 400; }
+.lako-ui-input-control input::placeholder { color: var(--lako-ui-faint); }
+.lako-ui-input-affix { flex: 0 0 auto; padding: 0 11px; color: var(--lako-ui-muted); font-size: 13px; font-weight: 400; }
+.lako-ui-input-affix + input { padding-left: 0; }
+.lako-ui-input-help { color: var(--lako-ui-muted); font-size: 11px; font-weight: 400; }
+.lako-ui-input-help.error { color: var(--lako-ui-danger); }
+
+.lako-ui-toggle { position: relative; width: 38px; height: 22px; flex: 0 0 auto; padding: 0; border: 1px solid var(--lako-ui-line); border-radius: 999px; background: color-mix(in srgb, var(--lako-ui-faint) 20%, transparent); transition: border-color .16s ease, background .16s ease; }
+.lako-ui-toggle > span { position: absolute; top: 3px; left: 3px; width: 14px; height: 14px; border-radius: 50%; background: var(--lako-ui-surface); box-shadow: 0 1px 3px rgba(20, 24, 26, .18); transition: transform .18s cubic-bezier(.22, .8, .24, 1); }
+.lako-ui-toggle.on { border-color: var(--lako-ui-accent-fill); background: var(--lako-ui-accent-fill); }
+.lako-ui-toggle.on > span { transform: translateX(16px); }
+.lako-ui-toggle:focus-visible { outline: 2px solid var(--lako-ui-accent); outline-offset: 3px; }
+.lako-ui-toggle:disabled { cursor: not-allowed; opacity: .4; }
+
+/* Foundations: scoped sizing never resets the host application's elements. */
+:where(.lako-ui-button, .lako-ui-textarea, .lako-ui-choice-input, .lako-ui-radio-group,
+  .lako-ui-badge, .lako-ui-alert, .lako-ui-skeleton, .lako-ui-empty-state) { box-sizing: border-box; }
+.lako-ui-button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 38px; padding: 0 16px; border: 1px solid var(--lako-ui-line); border-radius: 999px; background: transparent; color: var(--lako-ui-ink); font-family: var(--lako-ui-font); font-size: 13px; font-weight: 500; line-height: 1.4; cursor: pointer; transition: background .14s ease, border-color .14s ease, transform .14s ease; }
+.lako-ui-button.sm { min-height: 30px; padding: 0 12px; font-size: 12px; }
+.lako-ui-button.lg { min-height: 44px; padding: 0 22px; }
+.lako-ui-button.primary { border-color: var(--lako-ui-ink); background: var(--lako-ui-ink); color: var(--lako-ui-bg); }
+.lako-ui-button.ghost { border-color: transparent; }
+.lako-ui-button.danger { border-color: var(--lako-ui-danger); background: var(--lako-ui-danger); color: var(--lako-ui-on-accent); }
+.lako-ui-button:where(:not(:disabled)):hover { background: color-mix(in srgb, var(--lako-ui-accent-soft) 60%, var(--lako-ui-surface)); }
+.lako-ui-button.primary:where(:not(:disabled)):hover { background: color-mix(in srgb, var(--lako-ui-ink) 85%, var(--lako-ui-bg)); }
+.lako-ui-button.danger:where(:not(:disabled)):hover { background: color-mix(in srgb, var(--lako-ui-danger) 85%, var(--lako-ui-ink)); }
+.lako-ui-button:where(:not(:disabled)):active { transform: translateY(1px); }
+.lako-ui-button:focus-visible { outline: 2px solid var(--lako-ui-accent); outline-offset: 3px; }
+.lako-ui-button:disabled, .lako-ui-textarea:disabled, .lako-ui-input-control:has(input:disabled), .lako-ui-dropdown-trigger:disabled { cursor: not-allowed; opacity: .5; }
+.lako-ui-button-icon { display: inline-flex; align-items: center; }
+.lako-ui-button-icon svg { width: 16px; height: 16px; }
+.lako-ui-textarea { display: block; width: 100%; min-height: 96px; resize: vertical; padding: 11px 12px; border: 1px solid var(--lako-ui-line); border-radius: 10px; background: color-mix(in srgb, var(--lako-ui-surface) 76%, transparent); color: var(--lako-ui-ink); font: inherit; font-size: 13px; font-weight: 400; line-height: 1.6; transition: border-color .14s ease, box-shadow .14s ease; }
+.lako-ui-textarea::placeholder { color: var(--lako-ui-faint); }
+.lako-ui-textarea:focus { outline: 0; border-color: color-mix(in srgb, var(--lako-ui-accent) 62%, var(--lako-ui-line)); box-shadow: 0 0 0 3px color-mix(in srgb, var(--lako-ui-accent) 8%, transparent); }
+.lako-ui-textarea.invalid { border-color: var(--lako-ui-danger); }
+.lako-ui-choice { display: flex; align-items: flex-start; gap: 10px; width: fit-content; max-width: 100%; color: var(--lako-ui-ink); font-family: var(--lako-ui-font); font-size: 13px; font-weight: 400; line-height: 1.5; cursor: pointer; }
+/* Native inputs own interaction; the small SVG marks only draw the state. */
+.lako-ui-choice.disabled, .lako-ui-choice:has(.lako-ui-choice-input:disabled) { cursor: not-allowed; opacity: .5; }
+.lako-ui-choice-control { position: relative; display: block; flex: 0 0 14px; width: 14px; height: 14px; margin-top: 3px; }
+.lako-ui-choice-input { appearance: none; -webkit-appearance: none; display: block; width: 100%; height: 100%; margin: 0; padding: 0; border: 1px solid color-mix(in srgb, var(--lako-ui-muted) 46%, var(--lako-ui-line)); border-radius: 3px; background: transparent; cursor: inherit; }
+.lako-ui-choice-input[type="radio"] { border-radius: 50%; }
+.lako-ui-choice-input:is(:checked, :indeterminate) { border-color: color-mix(in srgb, var(--lako-ui-accent) 62%, var(--lako-ui-line)); }
+.lako-ui-choice-mark { position: absolute; inset: 0; width: 14px; height: 14px; fill: none; stroke: var(--lako-ui-accent); stroke-width: 1.25; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
+.lako-ui-choice-mark > * { visibility: hidden; }
+.lako-ui-choice-dot { fill: var(--lako-ui-accent); stroke: none; }
+.lako-ui-choice-input:checked + .lako-ui-choice-mark :is(.lako-ui-choice-check, .lako-ui-choice-dot), .lako-ui-choice-input:indeterminate + .lako-ui-choice-mark .lako-ui-choice-dash { visibility: visible; }
+.lako-ui-choice-input:indeterminate + .lako-ui-choice-mark .lako-ui-choice-check { visibility: hidden; }
+@media (hover: hover) {
+  .lako-ui-choice:hover .lako-ui-choice-input:not(:disabled) { border-color: var(--lako-ui-muted); }
+}
+.lako-ui-choice:active .lako-ui-choice-input:not(:disabled) { border-color: var(--lako-ui-ink); }
+.lako-ui-choice-input:focus-visible { outline: 1px solid var(--lako-ui-accent); outline-offset: 3px; }
+.lako-ui-choice-input[aria-invalid="true"] { border-color: var(--lako-ui-danger); }
+.lako-ui-choice-input:disabled { cursor: not-allowed; }
+.lako-ui-choice-copy { display: grid; gap: 4px; }
+.lako-ui-radio-group { min-width: 0; margin: 0; padding: 0; border: 0; font-family: var(--lako-ui-font); }
+.lako-ui-radio-group legend { padding: 0; margin-bottom: 10px; color: var(--lako-ui-muted); font-size: 11px; font-weight: 600; }
+.lako-ui-radio-options { display: flex; flex-direction: column; gap: 12px; }
+.lako-ui-radio-group.horizontal .lako-ui-radio-options { flex-direction: row; flex-wrap: wrap; gap: 12px 22px; }
+
+/* A compact form enum: text and a fine rule, without a surrounding surface. */
+.lako-ui-radio-group.segmented .lako-ui-radio-options { display: inline-flex; flex-direction: row; flex-wrap: wrap; gap: 22px; max-width: 100%; }
+.lako-ui-radio-group.segmented .lako-ui-choice { position: relative; display: block; min-width: 0; }
+.lako-ui-radio-group.segmented .lako-ui-choice-control { position: absolute; width: 1px; height: 1px; margin: 0; overflow: hidden; clip-path: inset(50%); }
+.lako-ui-radio-group.segmented .lako-ui-choice-label { display: block; padding: 5px 0; border-bottom: 1px solid var(--lako-ui-line); color: var(--lako-ui-muted); font-size: 12px; font-weight: 500; line-height: 1.5; }
+.lako-ui-radio-group.segmented .lako-ui-choice:has(input:checked) .lako-ui-choice-label { border-bottom-color: var(--lako-ui-accent); color: var(--lako-ui-ink); }
+.lako-ui-radio-group.segmented .lako-ui-choice:has(input:focus-visible) .lako-ui-choice-label { outline: 1px solid var(--lako-ui-accent); outline-offset: 3px; }
+@media (hover: hover) {
+  .lako-ui-radio-group.segmented .lako-ui-choice:hover:has(input:not(:disabled):not(:checked)) .lako-ui-choice-label { border-bottom-color: var(--lako-ui-muted); color: var(--lako-ui-ink); }
+}
+.lako-ui-radio-group.segmented .lako-ui-choice:active:has(input:not(:disabled)) .lako-ui-choice-label { border-bottom-color: var(--lako-ui-ink); color: var(--lako-ui-ink); }
+.lako-ui-badge, .lako-ui-alert { --lako-status-color: var(--lako-ui-muted); }
+:is(.lako-ui-badge, .lako-ui-alert).info { --lako-status-color: var(--lako-ui-accent); }
+:is(.lako-ui-badge, .lako-ui-alert).success { --lako-status-color: var(--lako-ui-success); }
+:is(.lako-ui-badge, .lako-ui-alert).warning { --lako-status-color: var(--lako-ui-warning); }
+:is(.lako-ui-badge, .lako-ui-alert).danger { --lako-status-color: var(--lako-ui-danger); }
+.lako-ui-badge { display: inline-flex; align-items: center; padding: 3px 9px; border: 1px solid color-mix(in srgb, var(--lako-status-color) 24%, var(--lako-ui-line)); border-radius: 999px; background: color-mix(in srgb, var(--lako-status-color) 8%, var(--lako-ui-surface)); color: var(--lako-status-color); font-family: var(--lako-ui-font); font-size: 11px; font-weight: 500; line-height: 1.4; }
+.lako-ui-alert { display: flex; align-items: flex-start; gap: 12px; padding: 16px; border: 1px solid color-mix(in srgb, var(--lako-status-color) 30%, var(--lako-ui-line)); border-left: 3px solid var(--lako-status-color); border-radius: 10px; background: color-mix(in srgb, var(--lako-status-color) 5%, var(--lako-ui-surface)); color: var(--lako-ui-ink); font-family: var(--lako-ui-font); font-size: 13px; line-height: 1.6; }
+.lako-ui-alert-icon { color: var(--lako-status-color); }
+.lako-ui-alert-copy { display: grid; gap: 5px; min-width: 0; }
+.lako-ui-alert-copy > strong { font-weight: 600; }
+.lako-ui-alert-actions { margin-top: 7px; }
+.lako-ui-loading { display: inline-flex; align-items: center; color: var(--lako-ui-muted); }
+.lako-ui-spinner { display: inline-block; box-sizing: border-box; flex: 0 0 auto; width: 16px; height: 16px; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: lako-ui-spin .7s linear infinite; }
+.lako-ui-skeleton { width: 100%; height: 14px; border-radius: 6px; background: var(--lako-ui-surface-2); animation: lako-ui-pulse 1.6s ease-in-out infinite; }
+.lako-ui-empty-state { display: grid; justify-items: center; gap: 10px; padding: 36px 24px; text-align: center; color: var(--lako-ui-ink); font-family: var(--lako-ui-font); font-size: 14px; }
+.lako-ui-empty-state > strong { font-weight: 600; }
+.lako-ui-empty-state > p { max-width: 40ch; margin: 0; color: var(--lako-ui-muted); font-size: 13px; line-height: 1.6; }
+.lako-ui-empty-icon { color: var(--lako-ui-faint); font-size: 28px; }
+.lako-ui-empty-actions { margin-top: 8px; }
+.lako-ui-visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+@keyframes lako-ui-spin { to { transform: rotate(360deg); } }
+@keyframes lako-ui-pulse { 50% { opacity: .45; } }
+
+[data-reduce-motion="true"] :is(.lako-ui-spinner, .lako-ui-skeleton, .lako-ui-dialog-overlay, .lako-ui-dialog, .lako-ui-notification) { animation: none; }
+[data-reduce-motion="true"] :is(.lako-ui-button, .lako-ui-textarea, .lako-ui-input-control, .lako-ui-tabs-indicator, .lako-ui-tabs button, .lako-ui-dropdown-trigger, .lako-ui-dropdown-options, .lako-ui-toggle, .lako-ui-toggle > span) { transition: none; }
+
+@keyframes lako-ui-fade-in { from { opacity: 0; } }
+@keyframes lako-ui-dialog-in { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: scale(1); } }
+@keyframes lako-ui-fade-out { to { opacity: 0; } }
+@keyframes lako-ui-dialog-out { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(.96); } }
+@keyframes lako-ui-notification-in { from { opacity: 0; transform: translateX(24px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .lako-ui-spinner, .lako-ui-skeleton { animation: none; }
+  .lako-ui-button, .lako-ui-textarea, .lako-ui-input-control, .lako-ui-tabs-indicator, .lako-ui-tabs button { transition: none; }
+  .lako-ui-dialog-overlay, .lako-ui-dialog, .lako-ui-notification { animation: none; }
+  .lako-ui-dropdown-trigger, .lako-ui-dropdown-options, .lako-ui-toggle, .lako-ui-toggle > span { transition: none; }
+}
+
+@media (forced-colors: active) {
+  .lako-ui-radio-group.segmented .lako-ui-choice:has(input:checked) .lako-ui-choice-label { border-bottom-color: Highlight; color: Highlight; }
+  .lako-ui-choice-input { appearance: auto; -webkit-appearance: auto; background: revert; border: revert; }
+  .lako-ui-choice-mark { display: none; }
+}

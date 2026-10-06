@@ -1,3 +1,5 @@
+import type { ReactElement } from "react";
+
 export type LakoToggleProps = {
   checked: boolean;
   onChange: (checked: boolean) => void;
@@ -6,7 +8,13 @@ export type LakoToggleProps = {
   className?: string;
 };
 
-export function LakoToggle({ checked, onChange, ariaLabel, disabled = false, className = "" }: LakoToggleProps) {
+export function LakoToggle({
+  checked,
+  onChange,
+  ariaLabel,
+  disabled = false,
+  className = "",
+}: LakoToggleProps): ReactElement {
   return (
     <button
       className={`lako-ui-toggle${checked ? " on" : ""} ${className}`.trim()}

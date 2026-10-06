@@ -44,7 +44,7 @@
     "test": "pnpm build && node --test tests/*.test.mjs",
     "dev": "vite playground --host 127.0.0.1 --port 5400 --strictPort",
     "build:playground": "vite build playground --outDir dist",
-    "prepare": "pnpm build",
+    "prepare": "npm run build",
     "prepack": "pnpm typecheck && pnpm test"
   },
   "peerDependencies": {

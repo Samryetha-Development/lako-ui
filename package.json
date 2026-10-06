@@ -2,6 +2,7 @@
   "name": "@lako/ui",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.33.2",
   "type": "module",
   "description": "Themeable React components and Lako authentication UI, without framework dependencies.",
   "license": "AGPL-3.0-only",

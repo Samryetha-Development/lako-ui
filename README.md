@@ -3,11 +3,9 @@
 Samryetha 产品家族的 React 组件。React 19 + TypeScript，原生 ESM，不依赖 Next.js。
 通用控件自带带前缀的样式；授权组件单独提供入口。现有根入口继续兼容。
 
-独立仓库：[Samryetha-Development/lako-ui](https://github.com/Samryetha-Development/lako-ui)。设计参考：[Samryetha Interface Guidelines](https://github.com/Samryetha-Development/Samryetha-Interface-Guidelines)。
-
 ## 安装与使用
 
-源码独立维护，尚未发布到 npm。`private: true` 用于阻止误发 npm 包，与 GitHub 仓库可见性无关；可用 `pnpm pack` 生成的本地 tarball 安装。
+当前仍是组织发布候选，保留 `private: true`；可先用 `pnpm pack` 生成的本地 tarball 安装。
 
 ```sh
 pnpm add react@^19 react-dom@^19 ./lako-ui-0.1.0.tgz
@@ -82,7 +80,6 @@ import "@lako/ui/auth.css";
 在此目录运行（Node.js 22.12+ 可运行展示页工具链）：
 
 ```sh
-corepack enable
 pnpm install --frozen-lockfile
 pnpm dev                  # http://127.0.0.1:5400
 pnpm typecheck            # 同时检查组件与展示页

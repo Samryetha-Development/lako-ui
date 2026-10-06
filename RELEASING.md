@@ -1,38 +1,29 @@
-# 构建与发布
+# 组织发布准备
 
-源码仓库：<https://github.com/Samryetha-Development/lako-ui>。
+当前仓库是 `Samryetha-Development/lako-ui`。组件库仍使用现有包名并保留 `private: true`，不会直接发布到 registry；Git 依赖安装通过 `prepare` 构建 `dist`。
 
-## 开发
+## 当前结构
 
-使用 Node.js 22.12+ 与 package.json 指定的 pnpm 版本：
+- 仓库根目录：完整带样式 React 库。
+- `playground`：可独立构建的组件展示页，不依赖后端。
+- 两个包的 LICENSE 均复制自当前仓库；没有更换许可证。
 
-```sh
-corepack enable
-pnpm install --frozen-lockfile
-pnpm dev
-```
+## 本地检查
 
-组件源码位于 `src/`，交互与 SSR 测试位于 `tests/`，展示页位于 `playground/`。这是独立仓库，不需要 Samryetha 后端或其工作区依赖。
+在仓库根目录执行 `pnpm typecheck`、`pnpm test`、`pnpm build:playground`、`pnpm pack`。
 
-## 发布检查
+将实际 tarball 安装到仓库以外的空项目中，验证：
 
-```sh
-pnpm typecheck
-pnpm test
-pnpm build:playground
-pnpm pack
-```
+1. `@lako/ui`、`@lako/ui/components`、`@lako/ui/auth` 的 ESM 和类型均能解析。
+2. `ui.css`、`auth.css` 均存在。
+3. React / React DOM 由消费者提供。
+4. README 与 LICENSE 被包含；源码项目、环境文件、展示页构建产物不进入包。
+5. 展示页在浅色、深色、手机宽度下可用；检查表单读取/重置、复选/单选、搜索、页签键盘、弹窗焦点与减弱动效。
 
-`prepack` 会再次执行类型检查、测试与库构建。tarball 包含 ESM、声明、CSS、README、LICENSE 和发布文档。node_modules、环境文件、测试、展示页及其构建产物不进入运行时包。
+现有宿主通过 workspace 或 file 引用，修改库后先构建，再重新安装 file 依赖，最后执行宿主 typecheck/build。新增导出使用 dist 类型，干净 checkout 也应先构建库。
 
-用实际 tarball 在空项目安装，检查根入口、`/components`、`/auth` 以及 CSS 子路径。运行展示页验证浅色、深色、选择、焦点、表单提交和重置。当前测试记录见 [VALIDATION.md](VALIDATION.md)。
+## 实际发布时
 
-## npm 发布
+核对组织名称和包可见性后，再设置最终 name/version、移除 `private`、配置与目标 registry 匹配的 publishConfig。重跑检查和打包后发布；目前没有添加绑定未知组织的发布 workflow 或访问令牌。
 
-目前尚未发布到 npm，保留 `private: true`。GitHub 源码上传不会自动执行包发布。
-
-正式发包前确认组织 npm scope、最终包名和 registry 可见性，再更新 name/version、移除 private 并配置对应 publishConfig。重新完成上述检查后发布。不在仓库中保存访问令牌。
-
-## 与主仓库的关系
-
-组件最初来自 [Samryetha](https://github.com/Samryetha-Development/Samryetha) 的 `lako/packages/ui`，沿用原仓库 LICENSE。主论坛的 `samryetha-ui-commons` 仍留在主仓库，依赖主站外观，不属于本包。
+GitHub 组织仓库上传与 npm / GitHub Packages 发包是不同操作。确认目标后分别配置，不能用一次 git push 代替包发布。
